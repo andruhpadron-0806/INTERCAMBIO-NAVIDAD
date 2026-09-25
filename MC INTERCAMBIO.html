@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amigo Secreto 🎄</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Montserrat',sans-serif;
+    color:white;
+    overflow-x:hidden;
+
+    background:
+        linear-gradient(
+            rgba(5,15,30,.62),
+            rgba(5,10,25,.88)
+        ),
+        url("https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=2000&q=90");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+
+/* =====================================================
+   NIEVE
+===================================================== */
+
+.snow{
+    position:fixed;
+    top:-30px;
+    color:white;
+    pointer-events:none;
+    z-index:5;
+    animation:caer linear infinite;
+}
+
+@keyframes caer{
+
+    0%{
+        transform:translateY(-30px) rotate(0);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:.2;
+    }
+}
+
+
+/* =====================================================
+   LUCES
+===================================================== */
+
+.luces{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:45px;
+
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+    z-index:10;
+}
+
+.bombilla{
+    width:13px;
+    height:20px;
+    border-radius:50%;
+    background:white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px white;
+
+    animation:brillar 1.5s infinite alternate;
+}
+
+.bombilla:nth-child(2n){
+    animation-delay:.4s;
+}
+
+.bombilla:nth-child(3n){
+    animation-delay:.8s;
+}
+
+@keyframes brillar{
+
+    from{
+        opacity:.35;
+        transform:scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.2);
+    }
+}
+
+
+/* =====================================================
+   CONTENEDOR
+===================================================== */
+
+.contenedor{
+    width:min(92%,700px);
+    margin:90px auto 50px;
+    position:relative;
+    z-index:2;
+}
+
+
+/* =====================================================
+   TARJETA
+===================================================== */
+
+.tarjeta{
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-radius:30px;
+
+    padding:40px 30px;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.2);
+
+    text-align:center;
+}
+
+
+/* =====================================================
+   ENCABEZADO
+===================================================== */
+
+.emoji-navidad{
+    font-size:65px;
+    animation:flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:clamp(38px,8vw,60px);
+
+    margin-top:5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffe7a8,
+            #fff
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.subtitulo{
+
+    margin-top:8px;
+    color:#eee;
+    font-size:15px;
+}
+
+.decoracion{
+
+    margin:20px 0;
+    font-size:20px;
+    letter-spacing:8px;
+}
+
+
+/* =====================================================
+   INSTRUCCIONES
+===================================================== */
+
+.instrucciones{
+
+    background:rgba(0,0,0,.18);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    margin:25px 0;
+
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.instrucciones h2{
+
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.instrucciones p{
+
+    color:#ddd;
+    font-size:13px;
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.input-box{
+    margin-top:25px;
+}
+
+.input-box label{
+
+    display:block;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+input{
+
+    width:100%;
+
+    padding:17px;
+
+    border:none;
+    outline:none;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.16);
+
+    color:white;
+
+    text-align:center;
+
+    font-size:18px;
+
+    letter-spacing:3px;
+
+    border:1px solid rgba(255,255,255,.25);
+}
+
+input::placeholder{
+    color:rgba(255,255,255,.55);
+}
+
+input:focus{
+
+    background:rgba(255,255,255,.22);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.15);
+}
+
+
+/* =====================================================
+   BOTÓN
+===================================================== */
+
+button{
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:17px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b5122b,
+            #7b071c
+        );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.4);
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.error{
+
+    display:none;
+
+    margin-top:15px;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    background:rgba(180,0,30,.25);
+
+    border:1px solid rgba(255,100,100,.3);
+
+    color:#ffd9d9;
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   RESULTADO
+===================================================== */
+
+.resultado{
+
+    display:none;
+
+    margin-top:30px;
+
+    animation:aparecer .8s ease;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.regalo{
+    font-size:60px;
+}
+
+.nombre{
+
+    margin-top:8px;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffe8a6,
+            #fff,
+            #ffe8a6
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+
+/* =====================================================
+   WISHLIST
+===================================================== */
+
+.wishlist{
+
+    margin-top:25px;
+
+    background:rgba(255,255,255,.10);
+
+    border-radius:22px;
+
+    padding:22px;
+
+    text-align:left;
+
+    border:1px solid rgba(255,255,255,.18);
+}
+
+.wishlist-title{
+
+    text-align:center;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:24px;
+
+    margin-bottom:18px;
+}
+
+.dato{
+
+    padding:14px 15px;
+
+    margin-bottom:10px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    font-size:14px;
+
+    line-height:1.5;
+}
+
+.dato:last-child{
+    margin-bottom:0;
+}
+
+.dato strong{
+
+    display:block;
+
+    color:#ffe7a8;
+
+    font-size:13px;
+
+    margin-bottom:7px;
+
+    letter-spacing:.5px;
+}
+
+.item{
+    margin:5px 0;
+    color:#f5f5f5;
+}
+
+
+/* =====================================================
+   REGLAS
+===================================================== */
+
+.reglas{
+
+    margin-top:30px;
+
+    background:rgba(0,0,0,.20);
+
+    padding:22px;
+
+    border-radius:20px;
+
+    text-align:left;
+}
+
+.reglas h3{
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:23px;
+}
+
+.reglas ul{
+    list-style:none;
+}
+
+.reglas li{
+
+    margin:11px 0;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+    color:#eee;
+}
+
+.reglas li::before{
+    content:"🎄 ";
+}
+
+
+/* =====================================================
+   MENSAJE
+===================================================== */
+
+.mensaje{
+
+    margin-top:25px;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+    color:#ffecc0;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    font-size:12px;
+
+    color:rgba(255,255,255,.65);
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media(max-width:600px){
+
+    .contenedor{
+        margin-top:70px;
+    }
+
+    .tarjeta{
+        padding:30px 20px;
+    }
+
+    .nombre{
+        font-size:28px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- LUCES -->
+
+<div class="luces">
+
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+    <div class="bombilla"></div>
+
+</div>
+
+
+<!-- NIEVE -->
+
+<div class="snow" style="left:5%;font-size:18px;animation-duration:9s;">❄</div>
+<div class="snow" style="left:15%;font-size:13px;animation-duration:12s;">❄</div>
+<div class="snow" style="left:25%;font-size:22px;animation-duration:8s;">❄</div>
+<div class="snow" style="left:35%;font-size:15px;animation-duration:11s;">❄</div>
+<div class="snow" style="left:45%;font-size:20px;animation-duration:10s;">❄</div>
+<div class="snow" style="left:55%;font-size:14px;animation-duration:13s;">❄</div>
+<div class="snow" style="left:65%;font-size:21px;animation-duration:9s;">❄</div>
+<div class="snow" style="left:75%;font-size:16px;animation-duration:12s;">❄</div>
+<div class="snow" style="left:85%;font-size:23px;animation-duration:10s;">❄</div>
+<div class="snow" style="left:95%;font-size:14px;animation-duration:8s;">❄</div>
+
+
+<!-- CONTENIDO -->
+
+<div class="contenedor">
+
+<div class="tarjeta">
+
+<div class="emoji-navidad">
+    🎄
+</div>
+
+<h1>
+    Amigo Secreto
+</h1>
+
+<p class="subtitulo">
+    Una sorpresa especial te espera...
+</p>
+
+<div class="decoracion">
+    ✦ 🎁 ✦
+</div>
+
+
+<!-- INSTRUCCIONES -->
+
+<div class="instrucciones">
+
+    <h2>
+        🔐 Descubre a tu persona
+    </h2>
+
+    <p>
+        Introduce tu código secreto para descubrir
+        quién es tu amigo secreto.
+
+        <br><br>
+
+        Después podrás conocer algunas de sus cosas
+        favoritas para elegir un regalo que realmente
+        le guste. 
+    </p>
+
+</div>
+
+
+<!-- INPUT -->
+
+<div class="input-box">
+
+    <label>
+        Ingresa tu código secreto
+    </label>
+
+    <input
+        type="text"
+        id="codigo"
+        maxlength="9"
+        placeholder="ABC-123AB"
+        autocomplete="off"
+    >
+
+    <button onclick="revelar()">
+        🎁 REVELAR MI AMIGO SECRETO
+    </button>
+
+</div>
+
+
+<!-- ERROR -->
+
+<div id="error" class="error">
+
+    ❌ Código incorrecto.
+    Revisa tu código e inténtalo nuevamente.
+
+</div>
+
+
+<!-- RESULTADO -->
+
+<div id="resultado" class="resultado">
+
+    <div class="regalo">
+        🎁
+    </div>
+
+    <p>
+        Tu amigo secreto es...
+    </p>
+
+    <div id="nombre" class="nombre"></div>
+
+
+    <!-- WISHLIST -->
+
+    <div class="wishlist">
+
+        <div class="wishlist-title">
+             Lista de deseos
+        </div>
+
+        <div id="lista"></div>
+
+    </div>
+
+</div>
+
+
+<!-- REGLAS -->
+
+<div class="reglas">
+
+    <h3>
+         Reglas del intercambio
+    </h3>
+
+    <ul>
+
+        <li>
+            El regalo debe tener un valor mínimo de
+            <strong>$200 MXN</strong>
+            y máximo de
+            <strong>$500 MXN</strong>.
+        </li>
+
+        <li>
+            El regalo puede incluir, si quieres, una carta, mensaje bonito, dibujo hecho a mano o cualquier pequeño detalle personal.
+        </li>
+
+        <li>
+            Lo importante es el cariño y la intención,
+            no gastar más dinero.
+        </li>
+
+        <li>
+             Mantén en secreto quién te tocó.
+        </li>
+
+        <li>
+             Evitemos comparaciones y bromas que puedan incomodar.
+        </li>
+
+            ❤️ La idea es convivir, divertirnos y crear un bonito recuerdo juntos..
+        </br>
+</BR>
+            🚫 Evita regalos incómodos o de mal gusto.
+       </BR>
+        </BR>
+            📅 Ten listo tu regalo para la fecha acordada.
+        
+
+    </ul>
+
+</div>
+
+
+<!-- MENSAJE -->
+
+<div class="mensaje">
+
+    ✨ No importa el tamaño del regalo,
+    sino el cariño con el que fue elegido. ✨
+
+    <br><br>
+
+    Que esta Navidad nos recuerde que
+    los pequeños detalles pueden crear
+    grandes momentos. ❤️
+
+</div>
+
+</div>
+
+
+<footer>
+
+    
+
+</footer>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CÓDIGO → PERSONA
+===================================================== */
+
+const personas = {
+
+    "A08-4JN": "KARINA",
+    "M16-3N": "NOHEMI",
+    "F20-2C": "CUAUTHEMOC",
+    "O30-10AK": "AKIRA",
+    "M09-3AB": "ABRIL",
+    "N11-11AL": "ALEX",
+    "A09-8K": "KENIA"
+
+};
+
+
+/* =====================================================
+   SORTEO
+===================================================== */
+
+const intercambio = {
+
+    "A08-4JN": "NOHEMI",
+    "M16-3N": "AKIRA",
+    "F20-2C": "ALEX",
+    "O30-10AK": "ABRIL",
+    "M09-3AB": "CUAUTHEMOC",
+    "N11-11AL": "KENIA",
+    "A09-8K": "KARINA"
+
+};
+
+
+/* =====================================================
+   LISTAS
+===================================================== */
+
+const listas = {
+
+    "NOHEMI": {
+
+        "K-POP & ANIME": [
+            "BTS",
+            "Cositas K-Pop",
+            "Studio Ghibli"
+        ],
+
+        "MÚSICA": [
+            "Siddharta"
+        ],
+
+        "LIBROS & MANGAS": [
+            "BL"
+        ],
+
+        "SNACKS": [
+            "Sabritas",
+            "Maruchan"
+        ],
+
+        "MANUALIDADES": [
+            "Crochet",
+            "Cartitas"
+        ],
+
+        "COLORES": [
+            "Verde olivo",
+            "Colores oscuros"
+        ]
+
+    },
+
+
+    "KENIA": {
+
+        "PERSONAJES": [
+            "Cinnamoroll",
+            "Tomioka",
+            "Armin",
+            "Sakura Haruno"
+        ],
+
+        "CREEPYPASTAS": [
+            "Jason The Toy Maker",
+            "Laughing Jack"
+        ],
+
+        "VIDEOJUEGOS": [
+            "Honkai: Star Rail — Dan Heng / Sunday",
+            "Sally Face",
+            "Alice: Madness Returns",
+            "Lies of P",
+            "Stardew Valley — Sebastian"
+        ],
+
+        "SERIES": [
+            "Castlevania — Alucard"
+        ],
+
+        "BEBIDAS": [
+            "Coca-Cola"
+        ],
+
+        "COLORES": [
+            "Azul",
+            "Aguamarina",
+            "Verde azulado",
+            "Cian"
+        ]
+
+    },
+
+
+    "ALEX": {
+
+        "SERIES & ANIME": [
+            "The Last of Us",
+            "The Walking Dead",
+            "Wednesday — Merlina, Enid y Familia Addams",
+            "Naruto — Equipo 7"
+        ],
+
+        "LIBROS": [
+            "Misterio",
+            "Terror",
+            "Suspenso"
+        ],
+
+        "ASTRONOMÍA": [
+            "Planetas",
+            "Espacio"
+        ],
+
+         "COLORES": [
+            "Verde"
+        ],
+
+
+        "CRIATURAS / ANIMALES": [
+            "Lobos",
+            "Hombres lobo"
+        ]
+
+    },
+
+
+    "AKIRA": {
+
+        "PERSONAJES FAVORITOS": [
+            "Snoopy",
+            "Pochacco",
+            "Satoru Gojo"
+        ],
+
+        "ENTRETENIMIENTO": [
+            "Algún juego",
+            "Slime 🥸"
+        ]
+
+    },
+
+
+    "CUAUTHEMOC": {
+
+        "IDOLO": [
+            "Messi"
+        ],
+
+        "ANIME": [
+            "Naruto"
+        ],
+
+        "REGALOS & ACCESORIOS": [
+            "Peluches",
+            "Gorras"
+        ],
+
+        "COLORES": [
+            "Azul",
+            "Negro"
+        ]
+
+    },
+
+
+    "KARINA": {
+     
+        "K-POP": [
+            "TWICE"
+        ],
+
+       "IDOLO": [
+            "Messi"
+        ],
+
+
+        "ANIME & MANGA": [
+            "Vegeta",
+            "Trunks",
+            "Gohan",
+            "Shinobu",
+            "Mitsuri",
+            "Sailor Mars",
+            "Sailor Júpiter",
+            "Charmander"
+        ],
+
+       
+        "ROPA & ACCESORIOS": [
+            "Camisas tipo polo",
+            "Mangas"
+            
+        ],
+
+        "LIBROS & MANGAS": [
+            "GL"
+        ],
+
+        "COLORES": [
+            "Azul",
+            "Negro",
+            "Gris",
+            "Rojo"
+        ],
+
+        "SNACKS": [
+            "Maruchan de queso",
+            "Sabritas"
+        ],
+
+        "MANUALIDADES": [
+            "Dibujos o detalles hechos a mano"
+        ]
+
+    },
+
+
+    "ABRIL": {
+
+        "MAQUILLAJE & BELLEZA": [
+            "Perfume de fruty",
+            "Rímel",
+            "Labial rojo o nude",
+            "Pestañas cortas",
+            "Mascarillas"
+        ],
+
+        "ACCESORIOS": [
+            "Collar de perla o letra A",
+            "Aretes de perla o diamantes",
+            "Pinzas para el cabello"
+        ],
+
+        "COLORES": [
+            "Vino",
+            "Gris"
+        ]
+
+    }
+
+};
+
+
+/* =====================================================
+   REVELAR
+===================================================== */
+
+function revelar(){
+
+    const codigo = document
+        .getElementById("codigo")
+        .value
+        .trim()
+        .toUpperCase();
+
+    const error =
+        document.getElementById("error");
+
+    const resultado =
+        document.getElementById("resultado");
+
+    const nombre =
+        document.getElementById("nombre");
+
+    const lista =
+        document.getElementById("lista");
+
+
+    error.style.display = "none";
+    resultado.style.display = "none";
+
+
+    /* Verificar código */
+
+    if(!personas[codigo]){
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    /* Obtener a quién le toca */
+
+    const amigo = intercambio[codigo];
+
+
+    /* Mostrar nombre */
+
+    nombre.textContent = amigo;
+
+
+    /* Limpiar lista */
+
+    lista.innerHTML = "";
+
+
+    /* Crear categorías */
+
+    Object.entries(listas[amigo]).forEach(
+        ([categoria, contenido]) => {
+
+            const dato =
+                document.createElement("div");
+
+            dato.className = "dato";
+
+
+            const titulo =
+                document.createElement("strong");
+
+            titulo.textContent = categoria;
+
+            dato.appendChild(titulo);
+
+
+            if(Array.isArray(contenido)){
+
+                contenido.forEach(item => {
+
+                    const elemento =
+                        document.createElement("div");
+
+                    elemento.className = "item";
+
+                    elemento.textContent =
+                        "• " + item;
+
+                    dato.appendChild(elemento);
+
+                });
+
+            }else{
+
+                const elemento =
+                    document.createElement("div");
+
+                elemento.className = "item";
+
+                elemento.textContent =
+                    contenido;
+
+                dato.appendChild(elemento);
+
+            }
+
+
+            lista.appendChild(dato);
+
+        }
+    );
+
+
+    /* Mostrar resultado */
+
+    resultado.style.display = "block";
+
+
+    resultado.scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"center"
+
+    });
+
+}
+
+
+/* =====================================================
+   ENTER
+===================================================== */
+
+document
+    .getElementById("codigo")
+    .addEventListener(
+        "keydown",
+        function(e){
+
+            if(e.key === "Enter"){
+
+                revelar();
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   FORMATO DEL CÓDIGO
+===================================================== */
+
+document
+    .getElementById("codigo")
+    .addEventListener(
+        "input",
+        function(){
+
+            this.value =
+                this.value
+                .toUpperCase()
+                .replace(
+                    /[^A-Z0-9-]/g,
+                    ""
+                );
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
